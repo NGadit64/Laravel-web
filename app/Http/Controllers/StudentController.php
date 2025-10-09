@@ -13,6 +13,13 @@ class StudentController extends Controller
      */
     public function index()
     {
+        $students = Student :: all();
+               
+        return view('student',[
+            'title' => 'student',
+            'students' => $students
+            ]);
+
        
     //     $students = [
     //         [
@@ -52,12 +59,6 @@ class StudentController extends Controller
     //         ],
     //     ];
         
-    $students = Student :: all();
-       
-        return view('student',[
-            'title' => 'student',
-            'students' => $students
-            ]);
 
     }
 
