@@ -13,7 +13,7 @@ class Subject extends Model
     use HasFactory;
 
     public function teacher() {
-        return $this->belongsTo(Teacher::class, 'subject_id');
+        return $this->hasOne(Teacher::class, 'subject_id');
     }
 
 }
