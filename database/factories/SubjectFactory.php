@@ -23,4 +23,4 @@ class SubjectFactory extends Factory
             'description'  => $this->faker->unique()->randomElement(['pelajaran', 'teori', 'banyak pr', 'pelajaran menyenangkan', 'Penting', 'kurang penting']),
         ];
     }
-}
+}//composer require barryvdh/laravel-debugbar --dev

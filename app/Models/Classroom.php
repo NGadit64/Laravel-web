@@ -14,7 +14,13 @@ class Classroom extends Model
     public function students(){
         return $this->hasMany(Student::class, 'classroom_id');
     } 
+
+    protected $fillable = [
+        'kelas', // tambahkan field yang boleh diisi massal
+    ];
 }
+
+
 //php artisan migrate:fresh --seed 
 //php artisan make:model Guardian -mfscr
 

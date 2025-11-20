@@ -1,11 +1,12 @@
-<x-layout>
+
+<x-admin.layout>
     <x-slot:judul>{{ $title }}</x-slot:judul>
 
     <h1 class="mb-4 text-xl font-bold">Daftar Siswa</h1>
 
     <div class="overflow-x-auto">
-        <table class="min-w-full border border-gray-400">
-            <thead class="bg-gray-200">
+    <table class="min-w-full border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800 text-gray-100">
                 <tr>
                     <th class="border border-gray-400 px-4 py-2">No</th>
                     <th class="border border-gray-400 px-4 py-2">Nama</th>
@@ -18,7 +19,7 @@
             </thead>
             <tbody>
                 @foreach($students as $student)
-                    <tr class="hover:bg-gray-100">
+                <tr class="hover:bg-blue-700 hover:text-white transition duration-200">
                         <td class="border border-gray-400 px-4 py-2">{{ $loop->iteration }}</td>
                         <td class="border border-gray-400 px-4 py-2">{{ $student->name }}</td>
                         <td class="border border-gray-400 px-4 py-2">
@@ -33,4 +34,5 @@
             </tbody>
         </table>
     </div>
-</x-layout>
+
+</x-admin.layout>
