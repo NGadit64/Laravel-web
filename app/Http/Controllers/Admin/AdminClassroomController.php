@@ -14,22 +14,13 @@ class AdminClassroomController extends Controller
         $classrooms = Classroom::all();
         return view('admin.classroom.classroom', compact('title', 'classrooms'));
     }
-
     public function create()
     {
-        // daftar kelas dari Factory
-        $classList = [
-            '10 PPLG 1', '10 PPLG 2', '10 PPLG 3', '10 PPLG 4', '10 PPLG 5',
-            '10 PPLG 6', '10 PPLG 7', '10 PPLG 8', '10 PPLG 9', '10 PPLG 10',
-            '10 PPLG 11', '10 PPLG 12', '10 PPLG 13', '10 PPLG 14', '10 PPLG 15',
-            '10 PPLG 16', '10 PPLG 17', '10 PPLG 18', '10 PPLG 19', '10 PPLG 20'
-        ];
-
         return view('admin.classroom.create', [
-            'title' => 'Tambah Kelas',
-            'classList' => $classList
+            'title' => 'Tambah Kelas'
         ]);
     }
+    
 
     public function store(Request $request)
     {

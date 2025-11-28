@@ -44,9 +44,7 @@ class AdminStudentController extends Controller
             ->with('success', 'Data siswa berhasil ditambahkan!');
     }
 
-    /** ================================
-     *        EDIT SISWA
-     *  ================================ */
+
     public function edit($id)
     {
         return view('admin.student.edit', [
@@ -56,9 +54,7 @@ class AdminStudentController extends Controller
         ]);
     }
 
-    /** ================================
-     *        UPDATE SISWA
-     *  ================================ */
+
     public function update(Request $request, $id)
     {
         $request->validate([

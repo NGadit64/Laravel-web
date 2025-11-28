@@ -15,9 +15,7 @@
     href="{{ route('admin.student.index') }}" 
     icon="fa-solid fa-users" 
     text="Data Siswa" 
-    :active="request()->is('admin/student*')" 
-/>
-
+    :active="request()->is('admin/student*')" />
 
         <x-admin.sidelink 
             href="{{ route('admin.classroom.index') }}"
@@ -27,17 +25,24 @@
         />
 
         <x-admin.sidelink 
-            href="/teacher"
+            href="{{ route('admin.teacher.index')}}"
             icon="fa-solid fa-user-tie"
             text="Data Guru"
-            :active="request()->is('teacher')"
+            :active="request()->is('admin/teacher*')"
         />
 
         <x-admin.sidelink 
-            href="/subject"
+            href="{{ route('admin.subject.index')}}"
             icon="fa-solid fa-book"
             text="Mata Pelajaran"
-            :active="request()->is('subject')"
+            :active="request()->is('admin/subject*')"
+        />
+
+        <x-admin.sidelink 
+            href="{{ route('admin.guardian.index')}}"
+            icon="fa-solid fa-book"
+            text="Guardian"
+            :active="request()->is('admin/guardian*')"
         />
 
         <x-admin.sidelink 
@@ -47,3 +52,4 @@
         />
     </nav>
 </aside>
+<!--  -->

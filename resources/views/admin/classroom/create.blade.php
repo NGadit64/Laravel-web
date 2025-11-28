@@ -11,21 +11,16 @@
 
             <div class="mb-4">
                 <label for="kelas" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
-                    Pilih Kelas
+                    Nama Kelas
                 </label>
 
-                <select name="kelas" id="kelas"
+                <input type="text" name="kelas" id="kelas"
                     class="border border-gray-300 dark:border-gray-600 
                            bg-white dark:bg-gray-700 
                            text-gray-900 dark:text-gray-200 
                            rounded w-full p-2
-                           focus:outline-none focus:ring focus:ring-blue-500">
-                    <option value="">-- Pilih Kelas --</option>
-
-                    @foreach($classList as $class)
-                        <option value="{{ $class }}">{{ $class }}</option>
-                    @endforeach
-                </select>
+                           focus:outline-none focus:ring focus:ring-blue-500"
+                    placeholder="Contoh: 10 PPLG 1, 11 RPL 2">
 
                 @error('kelas')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>

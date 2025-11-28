@@ -1,26 +1,39 @@
 <x-admin.layout>
     <x-slot:judul>Edit Kelas</x-slot:judul>
 
-    <div class="mx-auto max-w-2xl p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
-        <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
+    <div class="max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+        <h1 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">
             Edit Data Kelas
-        </h2>
+        </h1>
 
         <form action="{{ route('admin.classroom.update', $classroom->id) }}" method="POST">
             @csrf
             @method('PUT')
 
             <div class="mb-4">
-                <label class="block text-gray-700 dark:text-gray-300 mb-1">Nama Kelas</label>
-                <input type="text" name="kelas" value="{{ $classroom->kelas }}"
-                       class="w-full border rounded-lg px-3 py-2 bg-gray-100 dark:bg-gray-700 
-                              text-gray-900 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500">
+                <label for="kelas" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
+                    Nama Kelas
+                </label>
+
+                <input type="text" name="kelas" id="kelas"
+                    value="{{ $classroom->kelas }}"
+                    class="border border-gray-300 dark:border-gray-600 
+                           bg-white dark:bg-gray-700 
+                           text-gray-900 dark:text-gray-200 
+                           rounded w-full p-2
+                           focus:outline-none focus:ring focus:ring-blue-500">
+
+                @error('kelas')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
-            <button type="submit"
-                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Simpan Perubahan
-            </button>
+            <div class="flex justify-end">
+                <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                    Update
+                </button>
+            </div>
         </form>
     </div>
 </x-admin.layout>

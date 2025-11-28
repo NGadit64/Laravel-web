@@ -1,19 +1,23 @@
 <?php
 
 namespace App\Models;
-use App\Models\Teacher;
-use App\Models\Subject;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    /** @use HasFactory<\Database\Factories\SubjectFactory> */
     use HasFactory;
 
-    public function teacher() {
+    // Kolom yang boleh diisi
+    protected $fillable = [
+        'nama',
+        'description',
+    ];
+
+    // Relasi: 1 subject dimiliki oleh 1 guru
+    public function teacher()
+    {
         return $this->hasOne(Teacher::class, 'subject_id');
     }
-
 }
