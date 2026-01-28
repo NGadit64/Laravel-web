@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         hasStudents(5)
         ->create();
         Teacher::factory(6)->hasSubject(6)->create();
+        $this->call(UserSeeder::class);
        // Subject::factory(5)->hasTeacher(6)->create();
     }
 }

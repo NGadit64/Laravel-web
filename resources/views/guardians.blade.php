@@ -1,5 +1,5 @@
 
-<x-admin.layout>
+<x-layout>
     <x-slot:judul>{{ $title }}</x-slot:judul>
 
     <h1 class="mb-4 text-xl font-bold">Daftar Orangtua / Wali</h1>
@@ -29,4 +29,4 @@
         </table>
     </div>
 
-</x-admin.layout>
+</x-layout>

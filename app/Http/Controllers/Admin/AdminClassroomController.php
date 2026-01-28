@@ -8,12 +8,23 @@ use Illuminate\Http\Request;
 
 class AdminClassroomController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $title = "Daftar Kelas";
-        $classrooms = Classroom::all();
-        return view('admin.classroom.classroom', compact('title', 'classrooms'));
+        $search = $request->search;
+    
+        $classrooms = Classroom::when($search, function ($query, $search) {
+            $query->where('kelas', 'like', "%{$search}%");
+        })->get();
+    
+        return view('admin.classroom.classroom', compact(
+            'title',
+            'classrooms',
+            'search'
+        ));
     }
+    
+
     public function create()
     {
         return view('admin.classroom.create', [

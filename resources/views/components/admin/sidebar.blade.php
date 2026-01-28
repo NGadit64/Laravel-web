@@ -46,7 +46,7 @@
         />
 
         <x-admin.sidelink 
-            href="/"
+            href="/home"
             icon="fa-solid fa-right-from-bracket"
             text="Logout"
         />

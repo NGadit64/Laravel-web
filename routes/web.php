@@ -3,20 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KontakController;
-use App\Http\Controllers\HomeController; ////////////////////////////////////
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\admin\AdminClassroomController;
+use App\Http\Controllers\Admin\AdminClassroomController;
 use App\Http\Controllers\Admin\AdminStudentController;
 use App\Http\Controllers\Admin\AdminTeacherController;
 use App\Http\Controllers\Admin\AdminSubjectController;
 use App\Http\Controllers\Admin\AdminGuardianController;
+use App\Http\Controllers\AuthController;
 
-
-Route::get('/guardians', [GuardianController::class, 'guardians']);
+/* PUBLIC */
 Route::get('/', [ProfilController::class, 'index']);
 Route::get('/profil', [ProfilController::class, 'profil']);
 Route::get('/kontak', [KontakController::class, 'kontak']);
@@ -25,18 +25,29 @@ Route::get('/classroom', [ClassroomController::class, 'classroom']);
 Route::get('/student', [StudentController::class, 'index']);
 Route::get('/teacher', [TeacherController::class, 'teacher']);
 Route::get('/subject', [SubjectController::class, 'subject']);
+Route::get('/guardians', [GuardianController::class, 'guardians']);
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('classroom', AdminClassroomController::class);
-    Route::resource('student', AdminStudentController::class);
-    Route::resource('teacher', AdminTeacherController::class);
-    Route::resource('subject', AdminSubjectController::class);
-    Route::resource('guardian', AdminGuardianController::class);
+/* AUTH */
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+/* ADMIN */
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware('auth')
+    ->group(function () {
+
+        Route::get('/dashboard', fn () => view('admin.dashboard'))
+            ->name('dashboard');
+
+        Route::resource('classroom', AdminClassroomController::class);
+        Route::resource('student', AdminStudentController::class);
+        Route::resource('teacher', AdminTeacherController::class);
+        Route::resource('subject', AdminSubjectController::class);
+        Route::resource('guardian', AdminGuardianController::class);
 });
 
-Route::get('/dashboard', function(){
-    return view('admin.dashboard');
-});
 
 // Route::get('/profil', function () {
 //     return view('profil', [

@@ -1,7 +1,7 @@
 <x-admin.layout>
     <x-slot:judul>{{ $title }}</x-slot:judul>
 
-    <div class="max-w-lg mx-auto bg-white dark:bg-gray-800 p-6 rounded shadow">
+    <div class="max-w-lg mx-auto bg-gray-800 p-6 rounded shadow">
         <h1 class="text-xl font-bold mb-4">Edit Data Siswa</h1>
 
         <form action="{{ route('admin.student.update', $student->id) }}" method="POST">
@@ -18,8 +18,8 @@
 
             <label class="block mt-3 mb-2">Jenis Kelamin</label>
             <select name="gender" class="border p-2 rounded w-ful border p-2 rounded w-full bg-gray-900">
-                <option value="L" {{ $student->gender == 'L' ? 'selected' : '' }}>Laki-laki</option>
-                <option value="P" {{ $student->gender == 'P' ? 'selected' : '' }}>Perempuan</option>
+                <option value="Laki-laki" {{ $student->gender == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                <option value="Perempuan" {{ $student->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
             </select>
 
             <label class="block mt-3 mb-2">Kelas</label>

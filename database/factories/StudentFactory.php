@@ -22,7 +22,7 @@ class StudentFactory extends Factory
             'name' => $this->faker->name(), // nama lengkap
             'birthday' => $this->faker->date('Y-m-d', '2010-12-31'), // tanggal lahir sebelum 2010
             'classroom_id' => Classroom::factory(),
-            'gender' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
+            'gender' => $this->faker->randomElement(['Laki', 'Perempuan']),
             'email' => $this->faker->unique()->safeEmail(),
             'address' => $this->faker->address(),
         ];

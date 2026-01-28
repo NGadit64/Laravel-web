@@ -20,7 +20,7 @@
               :active="request()->is('profil')"
               >profil</x-nav-link>
               <x-nav-link href="/student"
-              :active="request()->is('index')"
+              :active="request()->is('student')"
               >student</x-nav-link>
               <x-nav-link href="/guardians"
               :active="request()->is('guardians')"
@@ -48,22 +48,35 @@
             </button>
 
             <!-- Profile dropdown -->
-            <el-dropdown class="relative ml-3">
-              <button class="relative flex max-w-xs items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">Open user menu</span>
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full outline -outline-offset-1 outline-white/10" />
-              </button>
+<!-- PROFILE / AUTH -->
+<div class="flex items-center space-x-4">
+  @auth
+    <img
+      class="w-8 h-8 rounded-full border border-gray-600"
+      src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? auth()->user()->email) }}"
+      alt="avatar"
+    />
 
-              <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-white py-1 shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Your profile</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Settings</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Sign out</a>
-              </el-menu>
-            </el-dropdown>
-          </div>
-        </div>
-        <div class="-mr-2 flex md:hidden">
+    <span class="text-gray-300 text-sm">
+      {{ auth()->user()->email }}
+    </span>
+
+    <form action="{{ route('logout') }}" method="POST">
+      @csrf
+      <button class="text-red-400 hover:text-red-300 text-sm">
+        Logout
+      </button>
+    </form>
+  @endauth
+
+  @guest
+    <a href="{{ route('login') }}"
+       class="text-gray-300 hover:text-white text-sm">
+      Login
+    </a>
+  @endguest
+</div>
+
           <!-- Mobile menu button -->
           <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
             <span class="absolute -inset-0.5"></span>

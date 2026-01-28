@@ -1,8 +1,8 @@
 <x-admin.layout>
     <x-slot:judul>{{ $title }}</x-slot:judul>
 
-    <div class="max-w-lg mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-        <h1 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+    <div class="max-w-lg mx-auto bg-gray-800 p-6 rounded-lg shadow">
+        <h1 class="text-xl font-bold mb-4 text-white">
             Tambah Data Siswa
         </h1>
 
@@ -11,13 +11,13 @@
 
             <!-- Nama -->
             <div class="mb-4">
-                <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
+                <label class="block text-gray-300 font-semibold mb-2">
                     Nama Lengkap
                 </label>
                 <input type="text" name="name"
-                    class="border border-gray-300 dark:border-gray-600 
-                           bg-white dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 rounded w-full p-2"
+                    class="border border-gray-600 
+                           bg-gray-700 
+                           text-gray-200 rounded w-full p-2"
                     required>
                 @error('name')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -26,13 +26,13 @@
 
             <!-- Tanggal Lahir -->
             <div class="mb-4">
-                <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
+                <label class="block text-gray-300 font-semibold mb-2">
                     Tanggal Lahir
                 </label>
                 <input type="date" name="birthday"
-                    class="border border-gray-300 dark:border-gray-600 
-                           bg-white dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 rounded w-full p-2"
+                    class="border border-gray-600 
+                           bg-gray-700 
+                           text-gray-200 rounded w-full p-2"
                     required>
                 @error('birthday')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -41,12 +41,12 @@
 
             <!-- Gender -->
             <div class="mb-4">
-                <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Gender</label>
+                <label class="block text-gray-300 font-semibold mb-2">Gender</label>
 
                 <select name="gender"
-                    class="border border-gray-300 dark:border-gray-600 
-                           bg-white dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 rounded w-full p-2"
+                    class="border border-gray-600 
+                           bg-gray-700 
+                           text-gray-200 rounded w-full p-2"
                     required>
                     <option value="">-- Pilih Gender --</option>
                     <option value="Laki-laki">Laki-laki</option>
@@ -60,14 +60,14 @@
 
             <!-- Kelas -->
             <div class="mb-4">
-                <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
+                <label class="block text-gray-300 font-semibold mb-2">
                     Pilih Kelas
                 </label>
 
                 <select name="classroom_id"
-                    class="border border-gray-300 dark:border-gray-600 
-                           bg-white dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 rounded w-full p-2"
+                    class="border border-gray-600 
+                           bg-gray-700 
+                           text-gray-200 rounded w-full p-2"
                     required>
                     <option value="">-- Pilih Kelas --</option>
 
@@ -83,13 +83,13 @@
 
             <!-- Email -->
             <div class="mb-4">
-                <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
+                <label class="block text-gray-300 font-semibold mb-2">
                     Email
                 </label>
                 <input type="email" name="email"
-                    class="border border-gray-300 dark:border-gray-600 
-                           bg-white dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 rounded w-full p-2">
+                    class="border border-gray-600 
+                           bg-gray-700 
+                           text-gray-200 rounded w-full p-2">
                 @error('email')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
@@ -97,13 +97,13 @@
 
             <!-- Alamat -->
             <div class="mb-4">
-                <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
+                <label class="block text-gray-300 font-semibold mb-2">
                     Alamat
                 </label>
                 <textarea name="address" rows="3"
-                    class="border border-gray-300 dark:border-gray-600 
-                           bg-white dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 rounded w-full p-2"></textarea>
+                    class="border border-gray-600 
+                           bg-gray-700 
+                           text-gray-200 rounded w-full p-2"></textarea>
 
                 @error('address')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>

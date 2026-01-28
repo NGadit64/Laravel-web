@@ -11,13 +11,24 @@ class AdminGuardianController extends Controller
     /**
      * Tampilkan semua data guardian
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->search;
+    
+        $guardians = Guardian::when($search, function ($query, $search) {
+            $query->where('name', 'like', "%{$search}%")
+                  ->orWhere('job', 'like', "%{$search}%")
+                  ->orWhere('phone', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+        })->get();
+    
         return view('admin.guardian.index', [
             'title' => 'Daftar Wali',
-            'guardians' => Guardian::all()
+            'guardians' => $guardians,
+            'search' => $search
         ]);
     }
+    
 
     /**
      * Form create guardian

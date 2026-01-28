@@ -9,15 +9,29 @@ use Illuminate\Http\Request;
 
 class AdminStudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::with('classroom')->get();
-
+        $search = $request->search;
+    
+        $students = Student::with('classroom')
+            ->when($search, function ($query) use ($search) {
+                $query->where('name', 'like', "%{$search}%")
+                      ->orWhere('email', 'like', "%{$search}%")
+                      ->orWhereHas('classroom', function ($q) use ($search) {
+                          $q->where('kelas', 'like', "%{$search}%");
+                      });
+            })
+            ->paginate(5)
+            ->withQueryString();
+    
         return view('admin.student.index', [
-            'title' => 'Data Siswa',
-            'students' => $students
+            'title'    => 'Data Siswa',
+            'students' => $students,
+            'search'   => $search
         ]);
     }
+    
+    
 
     public function create()
     {
@@ -73,9 +87,6 @@ class AdminStudentController extends Controller
             ->with('success', 'Data siswa berhasil diperbarui!');
     }
 
-    /** ================================
-     *        DELETE SISWA
-     *  ================================ */
     public function destroy($id)
     {
         Student::findOrFail($id)->delete();

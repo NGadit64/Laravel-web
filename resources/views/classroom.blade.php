@@ -1,5 +1,5 @@
 
-<x-admin.layout>
+<x-layout>
     <x-slot:judul>{{ $title }}</x-slot:judul>
 
     <h1 class="mb-4 text-xl font-bold">Daftar Kelas</h1>
@@ -25,7 +25,7 @@
         </table>
     </div>
 
-</x-admin.layout>
+</x-layout>
 
 <!-- 
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
