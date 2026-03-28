@@ -9,7 +9,15 @@
 <body>
 
 <section class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
-  <div class="w-full max-w-md bg-white rounded-lg shadow dark:bg-gray-800 p-8">
+    
+<div class="w-full max-w-md bg-white rounded-lg shadow dark:bg-gray-800 p-8">
+
+<a href="/home"
+   class="inline-flex items-center mb-4 text-sm font-medium
+          text-gray-600 hover:text-blue-600
+          dark:text-gray-400 dark:hover:text-white">
+    ← Back to Home
+</a>
 
     <h1 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
         Sign in

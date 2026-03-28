@@ -49,6 +49,15 @@
 
             <!-- Profile dropdown -->
 <!-- PROFILE / AUTH -->
+@auth
+  <x-nav-link 
+    href="{{ route('admin.dashboard') }}"
+    :active="request()->is('admin/dashboard')"
+  >
+    Admin Dashboard
+  </x-nav-link>
+@endauth
+
 <div class="flex items-center space-x-4">
   @auth
     <img

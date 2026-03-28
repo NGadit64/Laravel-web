@@ -48,7 +48,7 @@
         <x-admin.sidelink 
             href="/home"
             icon="fa-solid fa-right-from-bracket"
-            text="Logout"
+            text="Home"
         />
     </nav>
 </aside>

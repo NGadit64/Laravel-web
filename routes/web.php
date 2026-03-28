@@ -28,14 +28,18 @@ Route::get('/subject', [SubjectController::class, 'subject']);
 Route::get('/guardians', [GuardianController::class, 'guardians']);
 
 /* AUTH */
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::get('/login', [AuthController::class, 'showLogin'])
+    ->name('login')
+    ->middleware('guest');
+
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /* ADMIN */
 Route::prefix('admin')
     ->name('admin.')
-    ->middleware('auth')
+    ->middleware(['auth', 'admin'])
+
     ->group(function () {
 
         Route::get('/dashboard', fn () => view('admin.dashboard'))
